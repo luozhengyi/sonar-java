@@ -47,31 +47,31 @@ import java.util.List;
 public class ClassTreeImpl extends JavaTree implements ClassTree {
 
   private final Kind kind;
-  private final SyntaxToken openBraceToken;
-  private final List<Tree> members;
-  private final SyntaxToken closeBraceToken;
-  private ModifiersTree modifiers;
-  private SyntaxToken atToken;
-  private SyntaxToken declarationKeyword;
-  private IdentifierTree simpleName;
-  private TypeParameters typeParameters;
+  private final SyntaxToken openBraceToken;  // "{"
+  private final List<Tree> members;  // (variable/method)fields
+  private final SyntaxToken closeBraceToken; //"}"
+  private ModifiersTree modifiers; // public/protected/private/abstract/final/sealed  //( multiple modifiers)
+  private SyntaxToken atToken; // public @interface SuppressWarnings { }  // annotaion interface
+  private SyntaxToken declarationKeyword; // class/interface/record
+  private IdentifierTree simpleName; // class name
+  private TypeParameters typeParameters; // generic type
   @Nullable
-  private SyntaxToken recordOpenParenToken;
-  private List<VariableTree> recordComponents = Collections.emptyList();
+  private SyntaxToken recordOpenParenToken; // open parenthese // "("
+  private List<VariableTree> recordComponents = Collections.emptyList(); // public record Rect(double l, double w) { }
   @Nullable
-  private SyntaxToken recordCloseParenToken;
+  private SyntaxToken recordCloseParenToken; // close parenthese // ")"
   @Nullable
-  private SyntaxToken extendsKeyword;
+  private SyntaxToken extendsKeyword; // "extends"
   @Nullable
-  private TypeTree superClass;
+  private TypeTree superClass; // extends superclass
   @Nullable
-  private SyntaxToken implementsKeyword;
-  private ListTree<TypeTree> superInterfaces;
+  private SyntaxToken implementsKeyword; // "implements"
+  private ListTree<TypeTree> superInterfaces; // implements interface1 interface2
   @Nullable
-  private SyntaxToken permitsKeyword;
-  private ListTree<TypeTree> permittedTypes;
+  private SyntaxToken permitsKeyword; // "permits"
+  private ListTree<TypeTree> permittedTypes; // public sealed class Shape permits Circle, Square, Rectangle { }
   @Nullable
-  public ITypeBinding typeBinding;
+  public ITypeBinding typeBinding; // A type binding represents fully-resolved type.
 
   public ClassTreeImpl(Kind kind, SyntaxToken openBraceToken, List<Tree> members, SyntaxToken closeBraceToken) {
     this.kind = kind;

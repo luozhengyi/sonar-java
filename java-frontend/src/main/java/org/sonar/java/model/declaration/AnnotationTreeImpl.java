@@ -33,6 +33,7 @@ import org.sonar.plugins.java.api.tree.TypeTree;
 
 public class AnnotationTreeImpl extends AssessableExpressionTree implements AnnotationTree {
 
+  //eg: @SuppressWarnings({"rawtypes", "unchecked"})
   private final SyntaxToken atToken;
   private final TypeTree annotationType;
   private final Arguments arguments;
